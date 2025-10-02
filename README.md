@@ -56,6 +56,8 @@ api-ai/
 
    ```bash
    node index.js
+   # atau
+   nodemon (apabila terinstall nodemon)
    ```
 
 ## 🛠️ Dependensi Utama
