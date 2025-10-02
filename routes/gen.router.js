@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { GoogleGenAI } from "@google/genai";
-const chatRouter = Router()
+const genRouter = Router()
 import { body, validationResult, check } from "express-validator";
 import multer from "multer";
 import fs from "fs/promises"
@@ -28,7 +28,7 @@ function extractText(res) {
     }
 }
 
-chatRouter.post("/",
+genRouter.post("/",
     check('prompt').notEmpty().withMessage('Prompt must be filled'),  
     async (req, res) => {
         const errors = validationResult(req);
@@ -73,7 +73,7 @@ chatRouter.post("/",
 })
 
 // Generate Text
-chatRouter.post("/generate-text", 
+genRouter.post("/generate-text", 
     check('prompt').notEmpty().withMessage('Prompt must be filled'),  
     async(req, res) => {
 
@@ -118,7 +118,7 @@ chatRouter.post("/generate-text",
 
 // Generate from image
 
-chatRouter.post("/generate-image",
+genRouter.post("/generate-image",
     upload.single('image'),
     check('prompt').notEmpty().withMessage('Prompt must be filled'),
     async (req, res) => {
@@ -172,7 +172,7 @@ chatRouter.post("/generate-image",
 
 // Generate from document
 
-chatRouter.post("/generate-document", 
+genRouter.post("/generate-document", 
     upload.single('document'),
     check('prompt').notEmpty().withMessage('Prompt must be filled'),
     async (req, res) => {
@@ -225,7 +225,7 @@ chatRouter.post("/generate-document",
 )
 
 // Generate from audio
-chatRouter.post("/generate-audio",
+genRouter.post("/generate-audio",
     upload.single('audio'),
     check('prompt').notEmpty().withMessage('Prompt must be filled'),
     async(req, res) => {
@@ -275,4 +275,4 @@ chatRouter.post("/generate-audio",
     }
 )
 
-export default chatRouter
+export default genRouter
