@@ -1,9 +1,9 @@
 import { Router } from "express"
-import chat from "./chat.router.js";
+import gen from "./gen.router.js";
 
 const router = Router()
 
-router.use("/chat", chat)
+router.use("/chat", gen)
 
 
 export default router
